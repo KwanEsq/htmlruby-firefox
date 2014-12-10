@@ -27,6 +27,12 @@ function process() {
     let ruby = rubies[i];
     let rtElems = ruby.querySelectorAll('rt');
     let rtCount = rtElems.length;
+    
+    let doubleRuby = (!!ruby.querySelector('rt + rtc')
+                  || !!ruby.querySelector('rt + rp + rtc')
+                  || !!ruby.querySelector('rtc:nth-of-type(2)')
+                  || !!ruby.querySelector('rt + rp + rt'));
+      ruby.dataset.hrDouble = doubleRuby;
 
     if (rtCount < 1) {
       dataset.push(false);
